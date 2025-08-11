@@ -6,9 +6,9 @@ export function InventarioPage(){
         <MainLayout>
             <div>
                 <span className="text-3xl text-black font-semibold">
-                    Módulo Reportes
+                    Módulo Inventario
                 </span>
-                <p> En este módulo podrás visualizar los reportes realizados. </p>
+                <p> En este módulo podrás visualizar el inventario general del hotel </p>
             </div>
 
             <InventarioView />

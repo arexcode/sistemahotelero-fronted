@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { DashboardPage, InventarioPage } from "../pages";
+import { ControlHabitacionesPage, DashboardPage, InventarioPage } from "../pages";
 
 export function AppRouter(){
     return(
@@ -8,6 +8,7 @@ export function AppRouter(){
 
             <Route path="/dashboard" element={ <DashboardPage /> } />
             <Route path="dashboard/inventario" element={ <InventarioPage /> } />
+            <Route path="dashboard/control-habitaciones" element={ <ControlHabitacionesPage /> } />
 
             <Route path="/*" element={ <Navigate to={"/"} /> } />
         </Routes>

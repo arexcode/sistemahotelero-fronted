@@ -1,5 +1,5 @@
 
-import { Box, FileText, Zap } from "lucide-react";
+import { BedSingle, Blocks, Box, FileText, Package, PackagePlus, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 
 // Ancho fijo reutilizable
@@ -25,18 +25,29 @@ export function SideBar() {
         <div className="mb-6">
           <h2 className="mb-2 px-2 text-xs font-semibold uppercase tracking-wider text-gray-500">Navegación</h2>
           <nav className="space-y-1 text-sm">
+
             <Link to="/dashboard/inventario" className="block focus:outline-none group">
               <div className="flex items-center rounded-md px-3 py-2 gap-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors">
-                <Box className="h-4 w-4" />
+                <Blocks className="h-4 w-4" />
                 <span className="font-medium">Inventario</span>
               </div>
             </Link>
+
             <Link to="/dashboard/reportes" className="block focus:outline-none group">
               <div className="flex items-center rounded-md px-3 py-2 gap-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors">
                 <FileText className="h-4 w-4" />
                 <span className="font-medium">Reportes</span>
               </div>
             </Link>
+
+            <Link to="/dashboard/control-habitaciones" className="block focus:outline-none group">
+              <div className="flex items-center rounded-md px-3 py-2 gap-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors">
+                <PackagePlus className="h-4 w-4" />
+                <span className="font-medium"> Control de Habitaciones </span>
+              </div>
+            </Link>
+
+
           </nav>
         </div>
       </div>
