@@ -1,9 +1,8 @@
 
-import { BedSingle, Blocks, Box, CircleUser, FileText, Package, PackagePlus, Zap } from "lucide-react";
+import { BedSingle, Blocks,  CircleUser, FileText, PackagePlus, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 
-// Ancho fijo reutilizable
-export const SIDEBAR_WIDTH = 256; // 64 * 4 (tailwind w-64)
+export const SIDEBAR_WIDTH = 256;
 
 export function SideBar() {
   return (

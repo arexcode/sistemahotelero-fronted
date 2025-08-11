@@ -4,11 +4,9 @@ import { ControlHabitacionesView } from "../views";
 export function ControlHabitacionesPage(){
     return(
         <MainLayout>
-            <div>
-                <span className="text-3xl text-black font-semibold">
-                    Módulo Control de Habitaciones
-                </span>
-                <p> En este módulo podrás registrar las solicitudes de suministros </p>
+            <div className="mt-8 ml-14">
+                <h1 className="text-4xl font-bold text-slate-800 mb-2"> Control de Habitaciones </h1>
+                <p className="text-slate-600">Gestiona tus categorías y productos de manera eficiente</p>
             </div>
 
             <ControlHabitacionesView />
