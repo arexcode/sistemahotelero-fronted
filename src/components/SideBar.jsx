@@ -1,5 +1,5 @@
 
-import { BedSingle, Blocks, Box, FileText, Package, PackagePlus, Zap } from "lucide-react";
+import { BedSingle, Blocks, Box, CircleUser, FileText, Package, PackagePlus, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 
 // Ancho fijo reutilizable
@@ -33,13 +33,6 @@ export function SideBar() {
               </div>
             </Link>
 
-            <Link to="/dashboard/reportes" className="block focus:outline-none group">
-              <div className="flex items-center rounded-md px-3 py-2 gap-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors">
-                <FileText className="h-4 w-4" />
-                <span className="font-medium">Reportes</span>
-              </div>
-            </Link>
-
             <Link to="/dashboard/control-habitaciones" className="block focus:outline-none group">
               <div className="flex items-center rounded-md px-3 py-2 gap-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors">
                 <PackagePlus className="h-4 w-4" />
@@ -47,6 +40,26 @@ export function SideBar() {
               </div>
             </Link>
 
+            <Link to="/dashboard/control-habitaciones" className="block focus:outline-none group">
+              <div className="flex items-center rounded-md px-3 py-2 gap-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors">
+                <BedSingle className="h-4 w-4" />
+                <span className="font-medium"> Habitaciones </span>
+              </div>
+            </Link>
+
+            <Link to="/dashboard/control-habitaciones" className="block focus:outline-none group">
+              <div className="flex items-center rounded-md px-3 py-2 gap-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors">
+                <CircleUser className="h-4 w-4" />
+                <span className="font-medium"> Personal </span>
+              </div>
+            </Link>
+
+            <Link to="/dashboard/reportes" className="block focus:outline-none group">
+              <div className="flex items-center rounded-md px-3 py-2 gap-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors">
+                <FileText className="h-4 w-4" />
+                <span className="font-medium">Reportes</span>
+              </div>
+            </Link>
 
           </nav>
         </div>
