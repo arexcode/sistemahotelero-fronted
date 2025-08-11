@@ -1,6 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { ControlHabitacionesPage, DashboardPage, InventarioPage } from "../pages";
-import { HabitacionesPage } from "../pages/HabitacionesPage";
+import { ControlHabitacionesPage, DashboardPage, HabitacionesPage, InventarioPage, PersonalPage } from "../pages";
 
 export function AppRouter(){
     return(
@@ -11,6 +10,8 @@ export function AppRouter(){
             <Route path="dashboard/inventario" element={ <InventarioPage /> } />
             <Route path="dashboard/control-habitaciones" element={ <ControlHabitacionesPage /> } />
             <Route path="dashboard/habitaciones" element={ <HabitacionesPage /> } />
+            <Route path="dashboard/personal" element={ <PersonalPage /> } />
+
 
             <Route path="/*" element={ <Navigate to={"/"} /> } />
         </Routes>
