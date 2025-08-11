@@ -1,8 +1,10 @@
+import { SideBar } from "../components";
 
-export function MainLayout(){
+export function MainLayout({ children }){
     return(
         <>
-        
+            <SideBar />
+            { children }
         </>
     )
 }
