@@ -1,4 +1,5 @@
 import { MainLayout } from "../layout";
+import { HabitacionesView } from "../views";
 
 export function HabitacionesPage(){
     return(
@@ -7,6 +8,8 @@ export function HabitacionesPage(){
                 <h1 className="text-4xl font-bold text-slate-800 mb-2">Sistema de Habitaciones</h1>
                 <p className="text-slate-600">Gestiona las habitaciones del Hotel </p>
             </div>
+            
+            <HabitacionesView />
         </MainLayout>
     )
 }
