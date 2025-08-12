@@ -1,36 +1,41 @@
 
-import { useState } from "react"
-import { X, Users } from "lucide-react"
+import { X, Users, Loader2 } from "lucide-react"
+import { useState } from "react";
+import PropTypes from "prop-types";
+import { useForm } from "../hooks"
+import { addPersonal } from "../helpers/personal";
 
 export function PersonalModal({ isOpen, onClose }) {
-  const [formData, setFormData] = useState({
+
+  const { onInputChanged, dni, nombreCompleto, rol, telefono } = useForm({
     dni: "",
-    nombre_completo: "",
+    nombreCompleto: "",
     rol: "",
     telefono: "",
-  })
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log("Nuevo personal:", formData)
-    // Aquí iría la lógica para agregar el personal
-    setFormData({ dni: "", nombre_completo: "", rol: "", telefono: "" })
-    onClose()
-  }
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+    const res = await addPersonal( dni, nombreCompleto, rol, telefono );
+    setLoading(false);
+    if (!res.ok) {
+      setError(res.message || "No se pudo agregar");
+      return;
+    }
+    onClose();
+  };
 
   if (!isOpen) return null
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-xl shadow-xl w-full max-w-md">
-        {/* Header */}
+
         <div className="flex items-center justify-between p-6 border-b border-slate-200">
           <div className="flex items-center">
             <Users className="h-5 w-5 text-emerald-600 mr-2" />
@@ -41,8 +46,7 @@ export function PersonalModal({ isOpen, onClose }) {
           </button>
         </div>
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6">
+  <form onSubmit={handleSubmit} className="p-6">
           <div className="space-y-4">
             <div>
               <label htmlFor="dni" className="block text-sm font-medium text-slate-700 mb-1">
@@ -52,8 +56,8 @@ export function PersonalModal({ isOpen, onClose }) {
                 type="text"
                 id="dni"
                 name="dni"
-                value={formData.dni}
-                onChange={handleChange}
+                value={ dni }
+                onChange={ onInputChanged }
                 className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-colors"
                 placeholder="Ingresa el DNI"
                 required
@@ -61,15 +65,15 @@ export function PersonalModal({ isOpen, onClose }) {
             </div>
 
             <div>
-              <label htmlFor="nombre_completo" className="block text-sm font-medium text-slate-700 mb-1">
+              <label htmlFor="nombreCompleto" className="block text-sm font-medium text-slate-700 mb-1">
                 Nombre Completo
               </label>
               <input
                 type="text"
-                id="nombre_completo"
-                name="nombre_completo"
-                value={formData.nombre_completo}
-                onChange={handleChange}
+                id="nombreCompleto"
+                name="nombreCompleto"
+                value={ nombreCompleto }
+                onChange={ onInputChanged }
                 className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-colors"
                 placeholder="Ingresa el nombre completo"
                 required
@@ -83,8 +87,8 @@ export function PersonalModal({ isOpen, onClose }) {
               <select
                 id="rol"
                 name="rol"
-                value={formData.rol}
-                onChange={handleChange}
+                value={ rol }
+                onChange={ onInputChanged }
                 className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-colors"
                 required
               >
@@ -106,16 +110,16 @@ export function PersonalModal({ isOpen, onClose }) {
                 type="tel"
                 id="telefono"
                 name="telefono"
-                value={formData.telefono}
-                onChange={handleChange}
+                value={ telefono }
+                onChange={ onInputChanged }
                 className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-colors"
                 placeholder="Ingresa el teléfono"
                 required
               />
             </div>
+            {error && <p className="text-sm text-red-600">{error}</p>}
           </div>
 
-          {/* Actions */}
           <div className="flex gap-3 mt-6">
             <button
               type="button"
@@ -126,9 +130,11 @@ export function PersonalModal({ isOpen, onClose }) {
             </button>
             <button
               type="submit"
-              className="flex-1 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium transition-colors"
+              disabled={loading}
+              className="flex-1 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-60 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
             >
-              Agregar Personal
+              {loading && <Loader2 className="h-4 w-4 animate-spin" />}
+              {loading ? "Guardando..." : "Agregar Personal"}
             </button>
           </div>
         </form>
@@ -136,3 +142,8 @@ export function PersonalModal({ isOpen, onClose }) {
     </div>
   )
 }
+
+PersonalModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+};

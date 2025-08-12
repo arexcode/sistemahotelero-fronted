@@ -26,13 +26,7 @@ export function PersonalView() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold text-slate-800 mb-2">Sistema de Personal</h1>
-        <p className="text-slate-600">Gestiona el personal de manera eficiente</p>
-      </div>
 
-      {/* Search and Actions Bar */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
         <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
           <div className="relative flex-1 max-w-md">

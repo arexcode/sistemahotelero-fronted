@@ -1,4 +1,5 @@
 import { MainLayout } from "../layout";
+import { PersonalView } from "../views";
 
 export function PersonalPage(){
     return(
@@ -8,7 +9,7 @@ export function PersonalPage(){
                 <p className="text-slate-600">Gestiona al personal del hotel</p>
             </div>
             
-            
+            <PersonalView />
         </MainLayout>
     )
 }
